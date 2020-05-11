@@ -847,6 +847,8 @@ createCountryList();
 changeCountry_element.addEventListener('click', () => {
     searchCountry_element.classList.toggle('hide');
     searchCountry_element.classList.add('fadeIn');
+    resetCountryList();
+    input.value = "";
 })
 
 //Closing the search box when close btn is clicked
@@ -877,3 +879,14 @@ input.addEventListener('input', () => {
         }
     })
 })
+
+
+//Function which resetback the country list 
+function resetCountryList(){
+    country_list.forEach(country => {
+
+            document.getElementById(country.name).classList.remove('hide');
+
+    
+    })
+}
