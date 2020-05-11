@@ -842,3 +842,9 @@ function createCountryList() {
 
 let num_of_ul_lists = 3;
 createCountryList();
+
+//Show/Hide the country list onclick 
+changeCountry_element.addEventListener('click', () => {
+    searchCountry_element.classList.toggle('hide');
+    searchCountry_element.classList.add('fadeIn');
+})

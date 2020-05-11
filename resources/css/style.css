@@ -143,6 +143,8 @@ main {
 
 .change-country {
     cursor: pointer;
+    display: inline;
+    border-bottom:1px solid blue;
 }
 
 .search-country {
