@@ -854,3 +854,9 @@ changeCountry_element.addEventListener('click', () => {
 close_btn.addEventListener('click',()=>{
     searchCountry_element.classList.add('hide');
 })
+
+//Closing the search box when country is selected
+
+countryList_element.addEventListener('click',()=>{
+    searchCountry_element.classList.add('hide');
+})
