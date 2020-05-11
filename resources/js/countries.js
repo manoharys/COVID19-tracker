@@ -834,7 +834,7 @@ function createCountryList() {
             i++;
         }
         document.getElementById(`${ul_list_id}`).innerHTML +=
-            `<li onclick="fetchData('${country.name}')" id-"${country.name}">
+            `<li onclick="fetchData('${country.name}')" id="${country.name}">
        ${country.name}
       </li>`
     })
@@ -851,12 +851,29 @@ changeCountry_element.addEventListener('click', () => {
 
 //Closing the search box when close btn is clicked
 
-close_btn.addEventListener('click',()=>{
+close_btn.addEventListener('click', () => {
     searchCountry_element.classList.add('hide');
 })
 
 //Closing the search box when country is selected
 
-countryList_element.addEventListener('click',()=>{
+countryList_element.addEventListener('click', () => {
     searchCountry_element.classList.add('hide');
+})
+
+// Filtering the countryList
+/*input event fires up whenever the value of the input changes*/
+
+input.addEventListener('input', () => {
+    let value = input.value.toUpperCase();
+    console.log(value);
+    country_list.forEach(country => {
+        if (country.name.toLocaleUpperCase().startsWith(value)) {
+            document.getElementById(country.name).classList.remove('hide');
+
+        } else {
+            document.getElementById(country.name).classList.add('hide');
+
+        }
+    })
 })
