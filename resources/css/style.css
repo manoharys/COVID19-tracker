@@ -245,7 +245,25 @@ main {
 
 
 /* SCROLL BAR */
-
+/* width */
+.country-list::-webkit-scrollbar {
+    width:10px;
+  }
+  
+  /* Track */
+  .country-list::-webkit-scrollbar-track {
+    background: #3d2c2c; 
+  }
+   
+  /* Handle */
+  .country-list::-webkit-scrollbar-thumb {
+    background: rgb(184, 163, 163); 
+  }
+  
+  /* Handle on hover */
+  .country-list::-webkit-scrollbar-thumb:hover {
+    background: rgb(85, 69, 69); 
+  }
 /* ---------------------------------------------- */
 /*                    FOOTER                      */
 /* ---------------------------------------------- */
