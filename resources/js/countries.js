@@ -875,14 +875,16 @@ input.addEventListener('input', () => {
         if (country.name.toLocaleUpperCase().startsWith(value)) {
             document.getElementById(country.name).classList.remove('hide');
 
-           //keypress event
-           input.addEventListener('keypress',()=>{ document.querySelector('.name').innerHTML = value})
+            //keypress event
+            input.addEventListener('keypress', () => {
+                document.querySelector('.name').innerHTML = value
+            })
         } else {
             document.getElementById(country.name).classList.add('hide');
 
         }
     })
-    
+
 })
 
 
