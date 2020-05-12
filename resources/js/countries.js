@@ -859,8 +859,10 @@ close_btn.addEventListener('click', () => {
 
 //Closing the search box when country is selected
 
-countryList_element.addEventListener('click', () => {
+countryList_element.addEventListener('click', (e) => {
     searchCountry_element.classList.add('hide');
+    console.log(e.target.innerHTML);
+    document.querySelector('.name').innerHTML = e.target.innerHTML.toUpperCase();
 })
 
 // Filtering the countryList
@@ -873,20 +875,23 @@ input.addEventListener('input', () => {
         if (country.name.toLocaleUpperCase().startsWith(value)) {
             document.getElementById(country.name).classList.remove('hide');
 
+           //keypress event
+           input.addEventListener('keypress',()=>{ document.querySelector('.name').innerHTML = value})
         } else {
             document.getElementById(country.name).classList.add('hide');
 
         }
     })
+    
 })
 
 
 //Function which resetback the country list 
-function resetCountryList(){
+function resetCountryList() {
     country_list.forEach(country => {
 
-            document.getElementById(country.name).classList.remove('hide');
+        document.getElementById(country.name).classList.remove('hide');
 
-    
+
     })
 }
