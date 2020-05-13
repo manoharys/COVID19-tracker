@@ -14,14 +14,13 @@ const ctx = document.getElementById('axes_line_chart').getContext('2d');
 let app_data = [],
     cases_list = [],
     recovered_list = [],
-    deaths_list = [],
-    deaths = [];
+    deaths_list = [];
 
 //Getting users country code
 let country_code = geoplugin_countryCode()
 let user_country;
-country_list.forEach( country =>{
-    if(country.code == country_code){
+country_list.forEach(country => {
+    if (country.code == country_code) {
         user_country = country.name;
     }
 })
@@ -30,12 +29,30 @@ console.log(user_country)
 
 
 
+function fetchData(user_country) {
 
+    fetch(`https://covid19-monitor-pro.p.rapidapi.com/coronavirus/cases_by_days_by_country.php?country=${user_country}`, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "covid19-monitor-pro.p.rapidapi.com",
+            "x-rapidapi-key": "7e269ec140msh8a5df9cfc21b4b4p1c1e3ejsn9aba26afc6e0"
+        }
+    }).then(response => {
+        return response.json();
+    }).then(data => {
 
-// fetch(`https://covid19-monitor-pro.p.rapidapi.com/coronavirus/cases_by_days_by_country.php?country=country`, {
-// 		"method": "GET",
-// 		"headers": {
-// 			"x-rapidapi-host": "covid19-monitor-pro.p.rapidapi.com",
-// 			"x-rapidapi-key": "7e269ec140msh8a5df9cfc21b4b4p1c1e3ejsn9aba26afc6e0"
-// 		}
-// 	})
+            //console.log(data);
+            dates = Object.keys(data);
+            //console.log(dates)
+
+            dates.forEach(date => {
+                let DATA = data[date];
+                app_data.push(DATA);
+              
+            });
+        }
+
+    )
+}
+
+fetchData(user_country)
