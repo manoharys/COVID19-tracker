@@ -66,6 +66,7 @@ fetchData(user_country)
 //Function which Updates UI 
 function updateUI() {
     updateStats();
+    updateAxisChar();
 
 }
 //Updating todays statistics
@@ -77,14 +78,39 @@ function updateStats() {
     console.log(before_last_entry);
 
     country_name_element.innerHTML = last_entry.country_name;
-    
+
     total_cases_element.innerHTML = last_entry.total_cases || 0;
     new_cases_element.innerHTML = `+${last_entry.new_cases || 0}`;
 
     recovered_element.innerHTML = last_entry.total_recovered || 0;
     new_recovered_element.innerHTML = `+${parseInt(last_entry.total_recovered.replace(/,/g,""))- parseInt(before_last_entry.total_recovered.replace(/,/g,""))}`;
-    
+
     deaths_element.innerHTML = last_entry.total_deaths;
     new_deaths_element.innerHTML = `+${last_entry.new_deaths||0}`;
 
 }
+
+let my_chart;
+//Function which updated chart
+function updateAxisChar() {
+    my_chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'First dataset',
+                data: [0, 20, 40, 50]
+            }],
+            labels: ['January', 'February', 'March', 'April']
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        suggestedMin: 50,
+                        suggestedMax: 100
+                    }
+                }]
+            }
+        }
+    })
+};
