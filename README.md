@@ -22,7 +22,12 @@ https://rapidapi.com/
 
 ---
 
+## Preview
+  <img src="https://github.com/manoharys/COVID19-tracker/blob/master/preview.gif">
+---
+
 ## License
+
 MIT License
 
 Copyright (c) [2017] [manohar]
