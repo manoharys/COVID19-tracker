@@ -32,7 +32,9 @@ country_list.forEach(country => {
 
 
 function fetchData(user_country) {
-    country_name_element.innerHTML = "Loading..."
+   
+        country_name_element.innerHTML = "Loading...";   
+    
     cases_list = [], recovered_list = [], formate_date=[],deaths_list = [], dates = [];
     fetch(`https://covid19-monitor-pro.p.rapidapi.com/coronavirus/cases_by_days_by_country.php?country=${user_country}`, {
             "method": "GET",
@@ -66,7 +68,7 @@ function fetchData(user_country) {
         })
 }
 
-fetchData(user_country)
+fetchData(user_country);
 
 //Function which Updates UI 
 function updateUI() {
