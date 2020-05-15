@@ -1,8 +1,10 @@
 # COVID19-tracker
-    
+  
+Our love is like COVID-19. No one saw it coming and we move fast🤐.
 ## Description
 
 Providing COVID-19 statistics based on user IP address..
+
 
 
 ---
@@ -10,7 +12,7 @@ Providing COVID-19 statistics based on user IP address..
 ## How To Use
 
 #### Installation
-
+Cough here often?
 
 ```html
    git clone https://github.com/manoharys/COVID19-tracker.git 
