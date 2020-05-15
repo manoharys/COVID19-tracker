@@ -97,20 +97,32 @@ function updateAxisChar() {
         type: 'line',
         data: {
             datasets: [{
-                label: 'First dataset',
-                data: [0, 20, 40, 50]
+                label: 'cases',
+                data: cases_list,
+                fill: false,
+                borderColor: '#fff',
+                backgroundColor: '#fff',
+                borderWidth: 1
+            }, {
+                label: 'recovered',
+                data: recovered_list,
+                fill: false,
+                borderColor: '#009688',
+                backgroundColor: '#009688',
+                borderWidth: 1
+            }, {
+                label: 'deaths',
+                data: deaths_list,
+                fill: false,
+                borderColor: '#f44336',
+                backgroundColor: '#f44336',
+                borderWidth: 1
             }],
-            labels: ['January', 'February', 'March', 'April']
+            labels: dates
         },
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        suggestedMin: 50,
-                        suggestedMax: 100
-                    }
-                }]
-            }
+            resonsive: true,
+            maintainAspectRatio: false
         }
     })
 };
