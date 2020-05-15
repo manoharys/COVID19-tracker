@@ -13,7 +13,7 @@ Providing COVID-19 statistics based on user IP address..
 
 
 ```html
-    <p>git clone https://github.com/manoharys/COVID19-tracker.git</p>
+   git clone https://github.com/manoharys/COVID19-tracker.git 
 ```
     
 
