@@ -30,7 +30,7 @@ console.log(user_country)
 
 
 function fetchData(user_country) {
-
+    cases_list = [], recovered_list = [], deaths_list = [], dates = [];
     fetch(`https://covid19-monitor-pro.p.rapidapi.com/coronavirus/cases_by_days_by_country.php?country=${user_country}`, {
             "method": "GET",
             "headers": {
@@ -93,6 +93,9 @@ function updateStats() {
 let my_chart;
 //Function which updated chart
 function updateAxisChar() {
+    if (my_chart) {
+        my_chart.destroy();
+    }
     my_chart = new Chart(ctx, {
         type: 'line',
         data: {
