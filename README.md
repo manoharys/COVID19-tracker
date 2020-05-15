@@ -1,10 +1,28 @@
-# COVID19-tracker(Under construction)
+# COVID19-tracker
     
 ## Description
 
 Providing COVID-19 statistics based on user IP address..
-## License
 
+
+---
+
+## How To Use
+
+#### Installation
+
+
+```html
+    <p>git clone https://github.com/manoharys/COVID19-tracker.git</p>
+```
+    
+
+#### API Reference
+https://rapidapi.com/
+
+---
+
+## License
 MIT License
 
 Copyright (c) [2017] [manohar]
