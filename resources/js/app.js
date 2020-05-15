@@ -10,11 +10,13 @@ const new_deaths_element = document.querySelector('.deaths .new-value');
 
 const ctx = document.getElementById('axes_line_chart').getContext('2d');
 
+
 //App variable
 let app_data = [],
     cases_list = [],
     recovered_list = [],
     deaths_list = [];
+    formate_date=[];
 
 //Getting users country code
 let country_code = geoplugin_countryCode()
@@ -25,12 +27,13 @@ country_list.forEach(country => {
     }
 })
 
-console.log(user_country)
+//console.log(user_country)
 
 
 
 function fetchData(user_country) {
-    cases_list = [], recovered_list = [], deaths_list = [], dates = [];
+    country_name_element.innerHTML = "Loading..."
+    cases_list = [], recovered_list = [], formate_date=[],deaths_list = [], dates = [];
     fetch(`https://covid19-monitor-pro.p.rapidapi.com/coronavirus/cases_by_days_by_country.php?country=${user_country}`, {
             "method": "GET",
             "headers": {
@@ -41,12 +44,13 @@ function fetchData(user_country) {
             return response.json();
         }).then(data => {
 
-            console.log(data);
+           // console.log(data);
             dates = Object.keys(data);
             //console.log(dates)
 
             dates.forEach(date => {
                 let DATA = data[date];
+                formate_date.push(formatDate(date));
                 app_data.push(DATA);
                 cases_list.push(parseInt(DATA.total_cases.replace(/,/g, "")));
                 recovered_list.push(parseInt(DATA.total_recovered.replace(/,/g, "")));
@@ -54,6 +58,7 @@ function fetchData(user_country) {
 
             });
         }).then(() => {
+                  
             updateUI();
         })
         .catch(error => {
@@ -65,6 +70,7 @@ fetchData(user_country)
 
 //Function which Updates UI 
 function updateUI() {
+   
     updateStats();
     updateAxisChar();
 
@@ -73,11 +79,11 @@ function updateUI() {
 function updateStats() {
     let last_entry = app_data[app_data.length - 1];
     let before_last_entry = app_data[app_data.length - 2];
+ 
 
-    console.log(last_entry);
-    console.log(before_last_entry);
-
+  
     country_name_element.innerHTML = last_entry.country_name;
+    
 
     total_cases_element.innerHTML = last_entry.total_cases || 0;
     new_cases_element.innerHTML = `+${last_entry.new_cases || 0}`;
@@ -121,7 +127,7 @@ function updateAxisChar() {
                 backgroundColor: '#f44336',
                 borderWidth: 1
             }],
-            labels: dates
+            labels: formate_date
         },
         options: {
             resonsive: true,
@@ -129,3 +135,14 @@ function updateAxisChar() {
         }
     })
 };
+
+
+//Format Dates
+
+const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+
+function formatDate(dateString){
+    let date  = new Date(dateString);
+
+    return `${date.getDate()} ${monthNames[date.getMonth()]}`;
+}

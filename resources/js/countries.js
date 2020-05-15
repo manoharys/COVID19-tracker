@@ -861,8 +861,9 @@ close_btn.addEventListener('click', () => {
 
 countryList_element.addEventListener('click', (e) => {
     searchCountry_element.classList.add('hide');
-    console.log(e.target.innerHTML);
-    document.querySelector('.name').innerHTML = e.target.innerHTML.toUpperCase();
+    //console.log(e.target.innerHTML);
+
+    document.querySelector('.name').innerHTML = e.target.innerHTML;
 })
 
 // Filtering the countryList
